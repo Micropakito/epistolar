@@ -92,8 +92,7 @@
             </div>
         </div>
     </div>
-</x-app-layout>
-@push('scripts')
+    @push('scripts')
     <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
 
@@ -126,7 +125,9 @@
             document.getElementById('private_notes').value    = privateEditor.root.innerHTML;
         });
     </script>
-    
+
 @endpush
+</x-app-layout>
+
 
 
