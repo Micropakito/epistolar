@@ -73,7 +73,22 @@
                             {!! old('private_notes') !!}
                         </div>
                     </div>
-                </form>
+                    <div class="mb-4">
+                    <label class="block font-medium mb-1">Jugador que lleva este personaje</label>
+                    <select name="owner_user_id" class="border rounded px-3 py-2 w-full">
+                        <option value="">— Sin asignar (PNJ o aún sin dueño) —</option>
+                        @foreach(($participants ?? collect()) as $participant)
+                            <option value="{{ $participant->id }}"
+                                {{ old('owner_user_id') == $participant->id ? 'selected' : '' }}>
+                                {{ $participant->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <p class="text-xs text-gray-500 mt-1">
+                        Solo aparecen los amigos/participantes de esta historia.
+                    </p>
+                </div>
+                                </form>
             </div>
         </div>
     </div>
@@ -111,6 +126,7 @@
             document.getElementById('private_notes').value    = privateEditor.root.innerHTML;
         });
     </script>
+    
 @endpush
 
 

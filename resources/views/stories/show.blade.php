@@ -63,6 +63,21 @@
                         </button>
                     </form>
                 </div>
+                {{-- Personajes por participante --}}
+                <div class="mt-6">
+                    <h3 class="font-semibold text-gray-700 mb-1">Personajes por jugador</h3>
+
+                    @foreach($story->participants as $participant)
+                        <div class="mt-2">
+                            <strong>{{ $participant->name }}</strong>
+                            <ul class="text-sm text-gray-600 list-disc list-inside">
+                                @foreach($story->characters->where('owner_user_id', $participant->id) as $character)
+                                    <li>{{ $character->name }} ({{ $character->type }})</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endforeach
+                </div>
 
             </div>
 

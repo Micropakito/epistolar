@@ -84,6 +84,18 @@
                             Cancelar
                         </a>
                     </div>
+                    <div class="mb-4">
+                        <label class="block font-medium mb-1">Jugador que lleva este personaje</label>
+                        <select name="owner_user_id" class="border rounded px-3 py-2 w-full">
+                            <option value="">— Sin asignar (PNJ o aún sin dueño) —</option>
+                            @foreach(($participants ?? collect()) as $participant)
+                                <option value="{{ $participant->id }}"
+                                    {{ old('owner_user_id', $character->owner_user_id) == $participant->id ? 'selected' : '' }}>
+                                    {{ $participant->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
                 </form>
             </div>
         </div>
